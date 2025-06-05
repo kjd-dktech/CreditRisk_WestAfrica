@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\geometry{margin=2.5cm}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{Cahier des Charges \\ \large Analyse Prédictive pour l’Accès au Crédit en Afrique de l’Ouest}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Contexte}
+	
+	L’accès au financement constitue un levier crucial pour le développement des petites et moyennes entreprises (PME) ainsi que du secteur agricole en Afrique de l’Ouest. Toutefois, l'absence d’évaluation objective de la solvabilité constitue un frein pour l’accès au crédit, en particulier pour les entrepreneurs non bancarisés.
+	
+	Ce projet vise à concevoir un système intelligent capable d’évaluer automatiquement la solvabilité d’un demandeur de crédit, afin de soutenir l’inclusion financière dans la région.
+	
+	\section{Objectif du Projet}
+	
+	Développer un modèle d’intelligence artificielle permettant de prédire la solvabilité des petites entreprises et des agriculteurs, à partir de leurs données économiques et financières, et de proposer une API accessible aux institutions de microfinance pour tester un profil emprunteur.
+	
+	\section{Périmètre du Projet}
+	
+	\begin{itemize}[label=--]
+		\item Collecte et traitement de données économiques, financières et sectorielles.
+		\item Conception et entraînement d’un modèle de classification binaire (solvable / non solvable).
+		\item Intégration du modèle dans une API web accessible.
+		\item Documentation technique et rapport d’analyse.
+	\end{itemize}
+	
+	\section{Technologies et Outils}
+	
+	\begin{itemize}[label=--]
+		\item \textbf{Langage} : Python
+		\item \textbf{Librairies} : Pandas, NumPy, Scikit-learn, TensorFlow ou PyTorch, Matplotlib, Seaborn
+		\item \textbf{Base de données} : PostgreSQL ou MongoDB
+		\item \textbf{API} : FastAPI
+		\item \textbf{Versioning} : Git/GitHub
+	\end{itemize}
+	
+	\section{Livrables Attendus}
+	
+	\begin{itemize}[label=--]
+		\item Jeu de données nettoyé et prêt à l’emploi
+		\item Rapport d’analyse exploratoire (EDA) et visualisations
+		\item Modèle de machine learning entraîné et évalué
+		\item Script d’exportation du modèle (pickle ou joblib)
+		\item API REST permettant de tester la solvabilité d’un utilisateur via une requête JSON
+		\item Rapport final du projet (PDF)
+	\end{itemize}
+	
+	\section{Méthodologie}
+	
+	\subsection{Étape 1 : Collecte et Préparation des Données}
+	
+	\begin{itemize}[label=--]
+		\item Collecte ou simulation de données économiques et financières
+		\item Nettoyage, traitement des valeurs manquantes et encodage
+		\item Normalisation ou standardisation des variables numériques
+	\end{itemize}
+	
+	\subsection{Étape 2 : Analyse Exploratoire}
+	
+	\begin{itemize}[label=--]
+		\item Analyse statistique des variables
+		\item Visualisation des corrélations et des distributions
+		\item Analyse de la balance des classes
+	\end{itemize}
+	
+	\subsection{Étape 3 : Modélisation}
+	
+	\begin{itemize}[label=--]
+		\item Sélection des variables pertinentes
+		\item Entraînement de plusieurs modèles (régression logistique, arbres, forêts, réseaux de neurones)
+		\item Évaluation à l’aide de métriques : précision, rappel, F1-score, AUC-ROC
+		\item Interprétabilité du modèle (SHAP, LIME)
+	\end{itemize}
+	
+	\subsection{Étape 4 : Intégration et Déploiement}
+	
+	\begin{itemize}[label=--]
+		\item Création d’une API FastAPI avec un endpoint /predict
+		\item Test local ou hébergement léger
+		\item Documentation de l’API (Swagger UI)
+	\end{itemize}
+	
+	\subsection{Étape 5 : Rédaction du Rapport}
+	
+	\begin{itemize}[label=--]
+		\item Description des étapes, choix méthodologiques et résultats
+		\item Présentation des performances du modèle
+		\item Capture d’écrans ou exemples d’utilisation de l’API
+	\end{itemize}
+	
+	\section{Impact Attendu}
+	
+	\begin{itemize}[label=--]
+		\item Réduction du risque pour les institutions financières
+		\item Inclusion financière de populations non couvertes par les systèmes bancaires classiques
+		\item Base technologique réutilisable dans d’autres contextes géographiques similaires
+	\end{itemize}
+	
+\end{document}
