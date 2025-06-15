@@ -17,9 +17,9 @@ from API.config.logging_config import logger
 from API.security.database import init_db
 from API.security.api_key_manager import verify_api_key
 from API.security.api_key_issuance import router as api_key_router
+from API.routes import auth, admin
 
 from API.security.database import get_db_connection
-
 
 
 
@@ -61,6 +61,8 @@ class LoanProfile(BaseModel):
 
 
 app.include_router(api_key_router)
+app.include_router(auth.router)
+app.include_router(admin.router)
 
 @app.get("/")
 def root():
