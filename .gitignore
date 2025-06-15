@@ -10,16 +10,16 @@ __pycache__/
 .ipynb_checkpoints
 
 # Données sensibles ou volumineuses
-Data/*.csv
+#Data/*.csv
 Data/*.xlsx
 Data/*.parquet
 Data/*.sav
 Data/*.pkl
 
 # Modèles et artefacts ML
-API/ml_models/
-API/processing_elements/*.pkl
-API/shap_explainer/*.pkl
+#API/ml_models/
+#API/processing_elements/*.pkl
+#API/shap_explainer/*.pkl
 Models/
 *.joblib
 *.h5
@@ -33,9 +33,9 @@ API/logs/
 *.env
 
 # Sorties de notebook converties
-Docs/Rapport/*.html
-Docs/Rapport/*.pdf
-Docs/Rapport/*.slides.html
+#Docs/Rapport/*.html
+#Docs/Rapport/*.pdf
+#Docs/Rapport/*.slides.html
 
 # Docker
 *.pid
