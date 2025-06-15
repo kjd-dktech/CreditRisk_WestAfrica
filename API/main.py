@@ -1,9 +1,8 @@
-import os
-import sys
+import os, secrets, sys, joblib
+from datetime import date
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Header, Depends
 from pydantic import BaseModel
-import joblib
 import pandas as pd
 
 from prometheus_fastapi_instrumentator import Instrumentator
@@ -14,6 +13,13 @@ from API.utils.email_alert import send_email_alert
 
 #from API.data_models.schemas import LoanProfile
 from API.config.logging_config import logger
+
+from API.security.database import init_db
+from API.security.api_key_manager import verify_api_key
+from API.security.api_key_issuance import router as api_key_router
+
+from API.security.database import get_db_connection
+
 
 
 
@@ -36,12 +42,13 @@ explainer = joblib.load("API/shap_explainer/explainer.pkl")
 
 app = FastAPI(title="Credit Scoring API")
 
+init_db() 
 
 instrumentator = Instrumentator().instrument(app).expose(app)
 
-def verify_api_key(x_api_key: str = Header(...)):
-    if x_api_key != API_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized")
+#def verify_api_key(x_api_key: str = Header(...)):
+#    if x_api_key != API_KEY:
+#        raise HTTPException(status_code=401, detail="Unauthorized")
 
 
 class LoanProfile(BaseModel):
@@ -51,6 +58,9 @@ class LoanProfile(BaseModel):
     duration: int
     Lender_portion_to_be_repaid: float
     loan_type: str
+
+
+app.include_router(api_key_router)
 
 @app.get("/")
 def root():
@@ -111,4 +121,17 @@ def explain(profile: LoanProfile, auth=Depends(verify_api_key)):
         send_slack_alert(f"❗ Explain Error: {e}")
         send_email_alert("Erreur /explain", str(e))
         raise HTTPException(status_code=500, detail="Explanation error")
-    
+
+
+#@app.post("/admin/create-api-key")
+#def create_api_key(owner: str):
+#    key = secrets.token_hex(16)
+#    conn = get_db_connection()
+#    cursor = conn.cursor()
+#    cursor.execute("""
+#        INSERT INTO api_keys (key, owner, last_reset)
+#        VALUES (?, ?, ?)
+#    """, (key, owner, str(date.today())))
+#    conn.commit()
+#    conn.close()
+#    return {"api_key": key}

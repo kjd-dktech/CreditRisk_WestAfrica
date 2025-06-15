@@ -26,6 +26,7 @@ Ce projet vise à développer un système intelligent capable d’évaluer autom
 ├── Notebook/             # Notebooks d'analyse, modélisation, interprétation
 ├── Src/                  # (optionnel) Code source additionnel
 ├── logs/                 # Logs d'exécution
+├── LICENSE               # License du projet
 ├── docker-compose.yml    # Déploiement Docker
 ├── promtail-config.yaml  # Config pour la collecte de logs
 ├── requirements.txt      # Dépendances Python
