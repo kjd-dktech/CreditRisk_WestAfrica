@@ -97,4 +97,4 @@ Ce projet vise à développer un système intelligent capable d’évaluer autom
 
 ## Licence
 
-Projet académique, voir le fichier LICENSE si présent.
+Voir le fichier LICENSE si présent.
