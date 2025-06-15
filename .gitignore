@@ -1,0 +1,50 @@
+# .gitignore
+# Environnement Python
+creditriskwestafricavenv/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Données sensibles ou volumineuses
+Data/*.csv
+Data/*.xlsx
+Data/*.parquet
+Data/*.sav
+Data/*.pkl
+
+# Modèles et artefacts ML
+API/ml_models/
+API/processing_elements/*.pkl
+API/shap_explainer/*.pkl
+Models/
+*.joblib
+*.h5
+
+# Logs
+logs/
+API/logs/
+
+# Fichiers de configuration locaux
+.env
+*.env
+
+# Sorties de notebook converties
+Docs/Rapport/*.html
+Docs/Rapport/*.pdf
+Docs/Rapport/*.slides.html
+
+# Docker
+*.pid
+*.log
+
+# VSCode
+.vscode/
+.settings/
+
+# Autres
+.DS_Store
+Thumbs.db

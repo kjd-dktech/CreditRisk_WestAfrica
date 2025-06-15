@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - loki
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - ./api/logs:/app/logs
+
+  loki:
+    image: grafana/loki:2.9.0
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+
+  promtail:
+    image: grafana/promtail:2.9.0
+    container_name: promtail
+    volumes:
+      - /var/log:/var/log
+      - ./api/logs:/var/log/fastapi
+      - ./promtail-config.yaml:/etc/promtail/config.yaml
+    command: -config.file=/etc/promtail/config.yaml
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - loki
+
+volumes:
+  grafana-storage:

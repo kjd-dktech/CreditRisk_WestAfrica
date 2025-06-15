@@ -1,0 +1,25 @@
+
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+pydantic==2.7.1
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.4.2
+joblib==1.4.2
+
+python-dotenv
+requests
+shap==0.45.1
+loguru==0.7.2
+
+prometheus-fastapi-instrumentator==6.1.0
+
+# Activer les endpoints avec upload de fichier via Swagger
+python-multipart==0.0.9
+
+# Pour alertes Slack ou Email plus tard
+# slack-sdk==3.27.1
+# aiosmtplib==3.0.1
+
+# Pour compatibilité large
+typing-extensions>=4.10.0
